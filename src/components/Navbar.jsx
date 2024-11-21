@@ -27,7 +27,7 @@ const Navbar = ({ onLogout }) => {
 
   return (
     <nav className={`sticky top-0 z-50 py-3 ${navbarBgClass} h-16`}>
-      <div className="container px-4 mx-auto relative text-sm">
+      <div className="container px-2 mx-auto relative text-sm">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
           <div className="flex items-center flex-shrink-0">

@@ -3,7 +3,7 @@ import landingimg from '../assets/landingimg.png';
 
 const Landing = () => {
   return (
-    <div className="bg-customColor-landingbackground w-full">
+    <div className="bg-customColor-landingbackground w-full ">
       {/* Main Content */}
       <div className="flex flex-col justify-center items-center pt-14">
         <h1 className="text-[35px] font-urbanist text-customColor-landingverydark text-4xl font-extralight">

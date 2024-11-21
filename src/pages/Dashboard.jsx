@@ -14,11 +14,11 @@ const Dashboard = () => {
       <div className="min-w-[1300px] bg-customColor-rmcardbackground rounded-lg shadow-xl p-8">
         {/* Header */}
         <div className="flex justify-between space-x-52 items-center mb-8">
-          <button className="bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600">
+          <button className="bg-[#387A79] text-white px-4 py-2 rounded-3xl hover:bg-teal-600">
             Start Monitoring
           </button>
-          <h1 className="text-2xl font-semibold text-gray-700">REALTIME METRICS</h1>
-          <button className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
+          <h1 className="text-3xl font-normal text-gray-700">REALTIME METRICS</h1>
+          <button className="bg-[#BE4848] text-white px-4 py-2 rounded-3xl hover:bg-red-600">
             Stop Monitoring
           </button>
         </div>
