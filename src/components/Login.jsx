@@ -1,4 +1,5 @@
 import { useEffect,useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import metrologo from '../assets/metrologo.png';
 import fanIcon from '../assets/fan.png';
 import bglogin from '../assets/bglogin.gif'; // Import the image from assets
@@ -9,14 +10,18 @@ const Login = ({onLogin}) => {
   const [userID, setUserID] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
+  const navigate = useNavigate(); 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (userID === 'Admin' && password === 'Admin123') {
+    if (userID === '1' && password === '1') {
       onLogin();
     } else {
       setError('Invalid UserID or Password');
     }
+  };
+
+  const go = () => {
+    navigate('/');
   };
 
   useEffect(() => {
@@ -125,7 +130,7 @@ const Login = ({onLogin}) => {
                 required className="w-72 px-4 py-2 rounded text-gray-700 font-raleway focus:outline-none border border-gray-300" />
             </div>
             <div className="mt-10 mr-6 text-center">
-              <button type="submit" className="w-32 font-medium border-solid border-white border bg-white text-[#407B7B] py-2 rounded-2xl hover:bg-[#407B7B] hover:text-white">
+              <button type="submit" onClick={go} className="w-32 font-medium border-solid border-white border bg-white text-[#407B7B] py-2 rounded-2xl hover:bg-[#407B7B] hover:text-white">
                 Submit
               </button>
             </div>

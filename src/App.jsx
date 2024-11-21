@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer.jsx'; // Move Footer logic to its own component
+import Footer from './components/Footer.jsx';
 import Landing from './pages/Landing';
 import Dashboard from './pages/Dashboard';
 import RULPrediction from './pages/RULPrediction';
@@ -10,7 +10,7 @@ import Chatbot from './pages/Chatbot';
 import Login from './components/Login';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -20,6 +20,25 @@ const App = () => {
     setIsLoggedIn(false);
   };
 
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      const confirmationMessage = "Are you sure you want to reload? You will lose unsaved progress.";
+      e.returnValue = confirmationMessage; // Required for Chrome
+      return confirmationMessage;
+    };
+
+    if (isLoggedIn) {
+      window.addEventListener("beforeunload", handleBeforeUnload);
+    } else {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    }
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [isLoggedIn]);
+
   return (
     <Router>
       <div className="min-h-screen flex flex-col">
@@ -28,7 +47,6 @@ const App = () => {
         ) : (
           <>
             <Navbar onLogout={handleLogout} />
-            {/* Routes */}
             <div className="flex-grow">
               <Routes>
                 <Route path="/" element={<Landing />} />
